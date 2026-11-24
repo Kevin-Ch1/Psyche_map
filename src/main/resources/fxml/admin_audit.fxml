@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.psychemap.ui.controller.AdminAuditController" spacing="18">
+
+    <Label styleClass="aviso-seguridad" wrapText="true" maxWidth="Infinity"
+           text="La bitácora muestra quién, cuándo y desde qué IP accedió, pero el contenido clínico permanece oculto. Los registros son inmutables (solo inserción)."/>
+
+        <VBox styleClass="card" spacing="14" VBox.vgrow="ALWAYS">
+        <HBox spacing="12" alignment="BOTTOM_LEFT">
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="DESDE" styleClass="campo-label"/>
+                <DatePicker fx:id="dpDesde" maxWidth="Infinity"/>
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="HASTA" styleClass="campo-label"/>
+                <DatePicker fx:id="dpHasta" maxWidth="Infinity"/>
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="USUARIO" styleClass="campo-label"/>
+                <ComboBox fx:id="cmbUsuario" maxWidth="Infinity"/>
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="ACCIÓN" styleClass="campo-label"/>
+                <ComboBox fx:id="cmbAccion" maxWidth="Infinity"/>
+            </VBox>
+            <Button text="Filtrar" styleClass="boton-primario" onAction="#onFiltrar"/>
+        </HBox>
+
+        <TableView fx:id="tablaAuditoria" VBox.vgrow="ALWAYS">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+            <columns>
+                <TableColumn fx:id="colFecha" text="MARCA TEMPORAL" prefWidth="150"/>
+                <TableColumn fx:id="colUsuario" text="USUARIO" prefWidth="120"/>
+                <TableColumn fx:id="colIp" text="IP ORIGEN" prefWidth="110"/>
+                <TableColumn fx:id="colModulo" text="MÓDULO" prefWidth="110"/>
+                <TableColumn fx:id="colAccion" text="ACCIÓN" prefWidth="190"/>
+                <TableColumn fx:id="colEntidad" text="ENTIDAD AFECTADA" prefWidth="300"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+        <HBox styleClass="card-bloqueada" alignment="CENTER_LEFT" spacing="14">
+        <VBox spacing="2">
+            <Label text="Expediente clínico" style="-fx-font-weight: bold;"/>
+            <Label text="Contenido médico bloqueado para el rol Administrador (RBAC)." styleClass="texto-gris"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Intentar abrir un expediente" styleClass="boton-peligro" onAction="#onIntentarExpediente"/>
+    </HBox>
+</VBox>

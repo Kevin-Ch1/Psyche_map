@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.psychemap.ui.controller.LoginController"
+      prefWidth="960" prefHeight="580">
+
+        <VBox styleClass="login-left" prefWidth="430" minWidth="430" spacing="16">
+        <padding>
+            <Insets top="56" right="48" bottom="48" left="48"/>
+        </padding>
+
+        <Label text="PsycheMap" styleClass="logo-texto"/>
+        <Label text="Estación Clínica de Neuropsicología" styleClass="login-titulo" wrapText="true">
+            <VBox.margin>
+                <Insets top="36"/>
+            </VBox.margin>
+        </Label>
+        <Label text="Del examen clínico al mapa cerebral, en un único puesto de trabajo."
+               styleClass="login-lead" wrapText="true"/>
+
+        <VBox spacing="12">
+            <VBox.margin>
+                <Insets top="16"/>
+            </VBox.margin>
+            <Label text="✓  Expedientes con notas de cada sesión" styleClass="login-item" wrapText="true"/>
+            <Label text="✓  Atlas de trastornos (DSM-5-TR / CIE-11)" styleClass="login-item" wrapText="true"/>
+            <Label text="✓  Bitácora de auditoría de cada acceso" styleClass="login-item" wrapText="true"/>
+        </VBox>
+    </VBox>
+
+        <StackPane styleClass="login-right" HBox.hgrow="ALWAYS">
+        <VBox maxWidth="360" maxHeight="-Infinity" spacing="8">
+
+            <Label text="Iniciar sesión" styleClass="titulo-form"/>
+            <Label text="Ingresa con la cuenta que te asignó el administrador. Cada acceso queda registrado."
+                   styleClass="texto-gris" wrapText="true">
+                <VBox.margin>
+                    <Insets bottom="14"/>
+                </VBox.margin>
+            </Label>
+
+            <Label text="USUARIO" styleClass="campo-label"/>
+            <TextField fx:id="tfUsuario" promptText="Tu nombre de usuario"/>
+
+            <Label text="CONTRASEÑA" styleClass="campo-label">
+                <VBox.margin>
+                    <Insets top="6"/>
+                </VBox.margin>
+            </Label>
+                        <PasswordField fx:id="pfClave" promptText="Tu contraseña" onAction="#onEntrar"/>
+
+            <Button text="Entrar" styleClass="boton-primario" maxWidth="Infinity" onAction="#onEntrar">
+                <VBox.margin>
+                    <Insets top="14"/>
+                </VBox.margin>
+            </Button>
+
+            <Label text="Cuentas de prueba: admin / admin1234 · dra.ramirez / demo1234 · inv.paredes / demo1234"
+                   styleClass="texto-gris" wrapText="true">
+                <VBox.margin>
+                    <Insets top="16"/>
+                </VBox.margin>
+            </Label>
+        </VBox>
+    </StackPane>
+</HBox>
